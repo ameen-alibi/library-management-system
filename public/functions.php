@@ -1,8 +1,8 @@
 <?php
 
-function base_path($file)
+function base_path()
 {
-    return dirname(__DIR__) . "\\" . $file;
+    return dirname(__DIR__);
 }
 
 

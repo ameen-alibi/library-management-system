@@ -13,5 +13,14 @@ class Request
     public function getMethod()
     {
         return strtolower($_SERVER['REQUEST_METHOD']);
-    } 
+    }
+
+    public function getBodyParam($param)
+    {
+        $method = strtoupper($this->getMethod());
+        $superglobal = "_{$method}";
+    
+        return isset($GLOBALS[$superglobal][$param]) ? $GLOBALS[$superglobal][$param] : null;
+    }
+    
 }

@@ -25,7 +25,7 @@ class Router
         if (is_callable($callback)) {
             call_user_func_array($callback, []);
         }
-        if (is_array($callback)) {
+        if (is_array($callback)) {                         
             $fullClassName = "App\Controllers" . "\\$callback[0]";
             call_user_func_array([new $fullClassName, $callback[1]], [$request, $response]);
         }

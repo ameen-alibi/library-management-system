@@ -8,7 +8,6 @@ class View
     public static function render($view, $args = [])
     {
         extract($args);
-
         $file = base_path() . "\\app\\views\\$view";
 
         if(is_readable($file))
@@ -24,7 +23,9 @@ class View
     {
         self::render($view,$args);
     }
-
     
-
+    public static function renderPartial($partial,$args=[])
+    {
+        self::render("\\partials\\$partial",$args);
+    }
 }

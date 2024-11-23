@@ -8,6 +8,19 @@ use PDO;
 abstract class Model 
 {
     protected static $db;
+    protected $data = [];
+
+    public function __construct($data = [])
+    {
+        foreach ($data as $key => $value) {
+            if (property_exists($this, $key)) {
+                $this->$key = $value;
+            } else {
+                // Consider some security improvements in the future (checking for allowed properties)
+                $this->data[$key] = $value;
+            }
+        }
+    }
 
     protected static function getDB()
     {

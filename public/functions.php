@@ -8,7 +8,7 @@ function base_path()
 
 function dump($var)
 {
-    echo '<pre';
+    echo '<pre>';
     var_dump($var);
     echo '</pre>';
 }

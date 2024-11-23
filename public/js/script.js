@@ -44,10 +44,3 @@ function validatePassword(password) {
     return passwordPattern.test(password);
 }
 
-
-const togglePassword = new HSTogglePassword(document.querySelector('#toggle-password'));
-const showBtn = document.querySelector('#show-btn');
-
-showBtn.addEventListener('click', () => {
-  togglePassword.show();
-});

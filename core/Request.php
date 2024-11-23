@@ -20,7 +20,10 @@ class Request
         $method = strtoupper($this->getMethod());
         $superglobal = "_{$method}";
     
-        return isset($GLOBALS[$superglobal][$param]) ? $GLOBALS[$superglobal][$param] : null;
+        return isset($GLOBALS[$superglobal][$param]) ? htmlspecialchars($GLOBALS[$superglobal][$param]) : null;
     }
-    
+    public function isAjax()
+    {
+        return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+    }
 }

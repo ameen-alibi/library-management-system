@@ -35,8 +35,8 @@
 
                 <!-- Remember Me Checkbox -->
                 <div class="mb-4 flex items-center">
-                    <input type="checkbox" id="remember" name="remember" class="text-primary">
-                    <label for="remember" class="ml-2 text-primary">Remember Me</label>
+                    <input type="checkbox" id="remember" name="remember" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800">
+                    <label for="remember" class="ml-2 text-gray-300">Remember Me</label>
                 </div>
 
                 <!-- Forgot Password Link -->
@@ -52,7 +52,7 @@
 
             <!-- Sign up Link -->
             <div class="mt-6 text-[#B0B3B8] text-center">
-                <p>Not a member? <a href="#" class="hover:underline">Start a 14-day free trial</a></p>
+                <p>Not a member? <a href="/register" class="hover:underline">Register here</a></p>
             </div>
         </div>
     </div>

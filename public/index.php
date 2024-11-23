@@ -12,9 +12,7 @@ session_start();
 $app = new Application();
 
 
-$app->route('get', '/', function () {
-    echo "<h1>Hello,world</h1>";
-});
+$app->route('get', '/',['HomeController','index']);
 
 $app->route('get', '/books', function () {
     echo 'List of books';
@@ -27,11 +25,9 @@ $app->route('post', '/books', function () {
 $app->route('get', '/login', ['LoginController', 'show']);
 $app->route('post', '/login', ['LoginController', 'login']);
 
-$app->route('get', "/register", ['RegisterController', 'register']);
+$app->route('get', "/register", ['RegisterController', 'show']);
+$app->route('post', "/register", ['RegisterController', 'register']);
 
-$app->route('get','/dashboard',function (){
-    echo "Success ya haj";
-});
-
+$app->route('get', "/library-home", ['LibraryHomeController', 'displayBooks']);
 
 $app->run();

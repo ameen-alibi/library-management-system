@@ -5,6 +5,7 @@ namespace Core;
 class Response
 {
     private string $body;
+    private array $errors;
     
     public function setResponseCode(int $code)
     {
@@ -20,5 +21,15 @@ class Response
     public function getBody(): string
     {
         return $this->body;
+    }
+    
+    public function setErrors($errors)
+    {
+        $this->errors = $errors;
+    }
+
+    public function getErrors()
+    {
+        return $this->errors;
     }
 }

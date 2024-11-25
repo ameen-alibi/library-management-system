@@ -5,7 +5,7 @@ namespace Core;
 class Response
 {
     private string $body;
-    private array $errors;
+    private array $errors = [];
     
     public function setResponseCode(int $code)
     {

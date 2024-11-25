@@ -9,12 +9,12 @@ use Core\Response;
 
 class User extends Model
 {
-    private $id;
-    private $email;
-    private $username;
-    private $password;
-    private $data = [];
-    private $errors = [];
+    protected $id;
+    protected $email;
+    protected $username;
+    protected $password;
+    protected $data = [];
+    protected $errors = [];
 
     public function __construct($data = [])
     {
@@ -74,10 +74,10 @@ class User extends Model
             $query = "INSERT INTO users (username,email,password,phone_number) 
             values(:username,:email,:password,:phone_number)";
             $statement = $db->prepare($query);
-            $statement->bindValue(":username",$this->username);
-            $statement->bindValue(":email",$this->email);
-            $statement->bindValue(":password",password_hash($this->password,PASSWORD_BCRYPT));
-            $statement->bindValue(":phone_number",$this->data["phone"]);
+            $statement->bindValue(":username", $this->username);
+            $statement->bindValue(":email", $this->email);
+            $statement->bindValue(":password", password_hash($this->password, PASSWORD_BCRYPT));
+            $statement->bindValue(":phone_number", $this->data["phone"]);
             $statement->execute();
             return true;
         }
@@ -121,10 +121,15 @@ class User extends Model
 
     public static function emailExists($email)
     {
-        if(!static::findUserByEmail($email)){
+        if (!static::findUserByEmail($email)) {
             return false;
         }
         return true;
     }
-}
 
+    // I used this because the empty function calls the isset internally so it will always return false for the dynamic properties
+    public function __isset($key)
+    {
+        return property_exists($this, $key) || array_key_exists($key, $this->data);
+    }
+}

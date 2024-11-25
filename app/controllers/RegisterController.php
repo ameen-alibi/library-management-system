@@ -11,7 +11,7 @@ class RegisterController
 {
     public function show(Request $request, Response $response)
     {
-        View::renderTemplate('register.php');
+        View::renderTemplate('register.php',['errors'=>$response->getErrors()]);
     }
     public function register(Request $request, Response $response)
     {
@@ -33,7 +33,11 @@ class RegisterController
             header("Location: /login");
             exit;
         }
-        print("<br>");
-        dump($response->getErrors());
+        else
+        {
+            header("Location: /register");
+            exit;
+        }
+        
     }
 }

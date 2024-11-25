@@ -7,11 +7,13 @@ use Exception;
 use Core\Request;
 use Core\Response;
 use App\Models\Book;
+use Core\Middleware;
 
 class LibraryHomeController
 {
     public function displayBooks(Request $request)
     {
+        Middleware::handle();
         $page =  max(intval(htmlspecialchars($request->getBodyParam('page'))),1);
         $booksPerPage = 8;
         $books = Book::getPaginatedBooks($page, $booksPerPage);
